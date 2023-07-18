@@ -35,6 +35,16 @@ public class PizzaRestController {
         return new ResponseEntity<>(this.pizzaService.getByName(name), HttpStatus.OK);
     }
 
+    @GetMapping("/containing/{item}")
+    public ResponseEntity<List<PizzaEntity>> getAllContains(@PathVariable String item){
+        return new ResponseEntity<>(this.pizzaService.getByDescriptionContaining(item), HttpStatus.OK);
+    }
+
+    @GetMapping("/notcontaining/{item}")
+    public ResponseEntity<List<PizzaEntity>> getAllNotContains(@PathVariable String item){
+        return new ResponseEntity<>(this.pizzaService.getByDescriptionNotContaining(item), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<PizzaEntity> get(@PathVariable Long id){
         return new ResponseEntity(this.pizzaService.get(id), HttpStatus.FOUND);
