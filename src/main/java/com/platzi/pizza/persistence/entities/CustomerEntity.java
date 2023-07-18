@@ -12,15 +12,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CustomerEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true, name = "id_customer")
-    private Long idCustomer;
+    private String idCustomer;
     @Column(nullable = false, length = 60)
     private String name;
     @Column(nullable = false, length = 100)
-    private String addres;
+    private String address;
     @Column(nullable = false, length = 50)
     private String email;
     @Column(nullable = false, length = 20, name = "phone_number")
-    private Long phoneNumber;
+    private String phoneNumber;
 }

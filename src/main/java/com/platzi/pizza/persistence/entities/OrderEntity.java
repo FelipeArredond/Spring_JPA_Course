@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "pizza_order")
@@ -16,7 +17,7 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order", nullable = false)
-    private Integer idOrder;
+    private Long idOrder;
 
     @Column(name = "id_customer", nullable = false, length = 15)
     private String idCustomer;
@@ -32,4 +33,12 @@ public class OrderEntity {
 
     @Column(name = "additional_notes", length = 200)
     private String additionalNotes;
+
+    @OneToOne
+    @JoinColumn(name = "id_customer", referencedColumnName = "id_customer", insertable = false, updatable = false)
+    private CustomerEntity customer;
+
+    @OneToMany(mappedBy = "orderEntity")
+    private List<OrderItemEntity> orderItemEntityList;
+
 }
