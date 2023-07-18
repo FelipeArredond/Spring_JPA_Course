@@ -3,6 +3,7 @@ package com.platzi.pizza.infrastructure;
 import com.platzi.pizza.application.PizzaService;
 import com.platzi.pizza.persistence.entities.PizzaEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,17 @@ public class PizzaRestController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<PizzaEntity>> getAll(){
-        return new ResponseEntity<>(this.pizzaService.getAll(), HttpStatus.OK);
+    public ResponseEntity<Page<PizzaEntity>> getAll(@RequestParam(defaultValue = "0") int page,
+                                                    @RequestParam(defaultValue = "8") int size){
+        return new ResponseEntity<>(this.pizzaService.getAll(page, size), HttpStatus.OK);
     }
 
     @GetMapping("/available")
-    public ResponseEntity<List<PizzaEntity>> getAllAvailable(){
-        return new ResponseEntity<>(this.pizzaService.getAvailable(), HttpStatus.OK);
+    public ResponseEntity<Page<PizzaEntity>> getAllAvailable(@RequestParam(defaultValue = "0") int page,
+                                                             @RequestParam(defaultValue = "8") int size,
+                                                             @RequestParam(defaultValue = "name") String sortBy,
+                                                             @RequestParam(defaultValue = "DESC") String sortDirection){
+        return new ResponseEntity<>(this.pizzaService.getAvailable(page, size, sortBy, sortDirection), HttpStatus.OK);
     }
 
     @GetMapping("/name/{name}")

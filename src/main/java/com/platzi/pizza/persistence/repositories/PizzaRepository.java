@@ -10,13 +10,9 @@ import java.util.List;
 @Repository
 public interface PizzaRepository extends ListCrudRepository<PizzaEntity, Long> {
     List<PizzaEntity> findAllByName(String name);
-
     List<PizzaEntity> findAllByAvailableTrueOrderByPrice();
-
     List<PizzaEntity> findAllByAvailableTrueAndNameIgnoreCase(String name);
-
     List<PizzaEntity> findAllByAvailableTrueAndDescriptionContainingIgnoreCase(String name);
     List<PizzaEntity> findAllByAvailableTrueAndDescriptionNotContainingIgnoreCase(String name);
-
     Integer countByVeganTrue();
 }
