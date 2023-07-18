@@ -2,6 +2,7 @@ package com.platzi.pizza.infrastructure;
 
 import com.platzi.pizza.application.OrderService;
 import com.platzi.pizza.persistence.entities.OrderEntity;
+import com.platzi.pizza.persistence.projection.OrderSummary;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,10 @@ public class OrderRestController {
     public ResponseEntity<List<OrderEntity>> getCustomerOrders(@PathVariable String idCostumer){
         return ResponseEntity.ok(this.orderService.getCustomerOrders(idCostumer));
     }
-
+    @GetMapping("/summary/{id}")
+    public ResponseEntity<OrderSummary> getCustomerOrders(@PathVariable Long id){
+        return ResponseEntity.ok(this.orderService.getSummary(id));
+    }
     @GetMapping("/today_orders")
     public ResponseEntity<List<OrderEntity>> getAllToday(){
         return ResponseEntity.ok(this.orderService.getTodayOrders());
