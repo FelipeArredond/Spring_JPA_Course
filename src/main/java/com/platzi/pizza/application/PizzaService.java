@@ -42,7 +42,7 @@ public class PizzaService {
     }
 
     public List<PizzaEntity> getByName(String name){
-        return this.pizzaRepository.findAllByAvailableTrueAndNameContainingIgnoreCase(name);
+        return this.pizzaRepository.findAllByAvailableTrueAndNameIgnoreCase(name);
     }
 
 }

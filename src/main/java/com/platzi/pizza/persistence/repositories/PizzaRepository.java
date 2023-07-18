@@ -13,5 +13,5 @@ public interface PizzaRepository extends ListCrudRepository<PizzaEntity, Long> {
 
     List<PizzaEntity> findAllByAvailableTrueOrderByPrice();
 
-    List<PizzaEntity> findAllByAvailableTrueAndNameContainingIgnoreCase(String name);
+    List<PizzaEntity> findAllByAvailableTrueAndNameIgnoreCase(String name);
 }
