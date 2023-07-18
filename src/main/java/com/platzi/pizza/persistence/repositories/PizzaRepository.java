@@ -17,4 +17,6 @@ public interface PizzaRepository extends ListCrudRepository<PizzaEntity, Long> {
 
     List<PizzaEntity> findAllByAvailableTrueAndDescriptionContainingIgnoreCase(String name);
     List<PizzaEntity> findAllByAvailableTrueAndDescriptionNotContainingIgnoreCase(String name);
+
+    Integer countByVeganTrue();
 }
