@@ -4,6 +4,7 @@ import com.platzi.pizza.application.OrderService;
 import com.platzi.pizza.persistence.entities.OrderEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,10 @@ public class OrderRestController {
     @GetMapping("")
     public ResponseEntity<List<OrderEntity>> getAll(){
         return ResponseEntity.ok(this.orderService.getAll());
+    }
+    @GetMapping("/by_customer/{idCostumer}")
+    public ResponseEntity<List<OrderEntity>> getCustomerOrders(@PathVariable String idCostumer){
+        return ResponseEntity.ok(this.orderService.getCustomerOrders(idCostumer));
     }
 
     @GetMapping("/today_orders")

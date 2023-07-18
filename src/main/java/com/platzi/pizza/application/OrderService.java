@@ -43,4 +43,8 @@ public class OrderService {
         return this.orderRepository.findAllByMethodIn(Arrays.asList(DELIVERY, CARRYOUT));
     }
 
+    public List<OrderEntity> getCustomerOrders(String idCustomer){
+        return this.orderRepository.findCustomerOrders(idCustomer);
+    }
+
 }
