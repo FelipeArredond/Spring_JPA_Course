@@ -5,6 +5,7 @@ import com.platzi.pizza.persistence.repositories.PizzaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PizzaService {
@@ -17,4 +18,23 @@ public class PizzaService {
     public List<PizzaEntity> getAll(){
         return this.pizzaRepository.findAll();
     }
+
+    public Optional<PizzaEntity> get(Long id){ return this.pizzaRepository.findById(id); }
+
+    public PizzaEntity save(PizzaEntity pizzaEntity) {
+        return this.pizzaRepository.save(pizzaEntity);
+    }
+
+    public void delete(long id){
+        this.pizzaRepository.deleteById(id);
+    }
+
+    public boolean exist(String name){
+        return this.pizzaRepository.findAllByName(name).isEmpty();
+    }
+
+    public boolean existById(long id){
+        return this.pizzaRepository.existsById(id);
+    }
+
 }
