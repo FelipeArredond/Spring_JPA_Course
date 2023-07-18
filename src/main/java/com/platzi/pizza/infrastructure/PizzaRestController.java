@@ -25,6 +25,16 @@ public class PizzaRestController {
         return new ResponseEntity<>(this.pizzaService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/available")
+    public ResponseEntity<List<PizzaEntity>> getAllAvailable(){
+        return new ResponseEntity<>(this.pizzaService.getAvailable(), HttpStatus.OK);
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<PizzaEntity>> getAllAvailable(@PathVariable String name){
+        return new ResponseEntity<>(this.pizzaService.getByName(name), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<PizzaEntity> get(@PathVariable Long id){
         return new ResponseEntity(this.pizzaService.get(id), HttpStatus.FOUND);

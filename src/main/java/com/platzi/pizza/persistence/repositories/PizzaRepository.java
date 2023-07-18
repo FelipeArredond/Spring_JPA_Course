@@ -10,4 +10,8 @@ import java.util.List;
 @Repository
 public interface PizzaRepository extends ListCrudRepository<PizzaEntity, Long> {
     List<PizzaEntity> findAllByName(String name);
+
+    List<PizzaEntity> findAllByAvailableTrueOrderByPrice();
+
+    List<PizzaEntity> findAllByAvailableTrueAndNameContainingIgnoreCase(String name);
 }
