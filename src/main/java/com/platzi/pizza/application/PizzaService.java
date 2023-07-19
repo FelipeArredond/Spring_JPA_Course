@@ -1,8 +1,10 @@
 package com.platzi.pizza.application;
 
+import com.platzi.pizza.persistence.dto.UpdatePizzaDto;
 import com.platzi.pizza.persistence.entities.PizzaEntity;
 import com.platzi.pizza.persistence.repositories.PizzaPagSort;
 import com.platzi.pizza.persistence.repositories.PizzaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +37,11 @@ public class PizzaService {
 
     public void delete(long id){
         this.pizzaRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void updatePizza(UpdatePizzaDto updatePizzaDto){
+        this.pizzaRepository.updatePrice(updatePizzaDto);
     }
 
     public boolean exist(String name){

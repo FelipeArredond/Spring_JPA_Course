@@ -1,6 +1,7 @@
 package com.platzi.pizza.infrastructure;
 
 import com.platzi.pizza.application.PizzaService;
+import com.platzi.pizza.persistence.dto.UpdatePizzaDto;
 import com.platzi.pizza.persistence.entities.PizzaEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -70,6 +71,15 @@ public class PizzaRestController {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(this.pizzaService.save(pizzaEntity));
+    }
+
+    @PutMapping("/price")
+    public ResponseEntity<Void> updatePizza(@RequestBody UpdatePizzaDto updatePizzaDto){
+        if(this.pizzaService.existById(updatePizzaDto.getPizzaId())){
+            this.pizzaService.updatePizza(updatePizzaDto);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @DeleteMapping("/{id}")
