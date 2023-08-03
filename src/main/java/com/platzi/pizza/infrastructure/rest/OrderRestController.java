@@ -1,4 +1,4 @@
-package com.platzi.pizza.infrastructure;
+package com.platzi.pizza.infrastructure.rest;
 
 import com.platzi.pizza.application.OrderService;
 import com.platzi.pizza.persistence.entities.OrderEntity;

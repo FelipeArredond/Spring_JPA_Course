@@ -1,4 +1,4 @@
-package com.platzi.pizza.infrastructure;
+package com.platzi.pizza.infrastructure.rest;
 
 import com.platzi.pizza.application.PizzaService;
 import com.platzi.pizza.persistence.dto.UpdatePizzaDto;
