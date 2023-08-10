@@ -1,4 +1,4 @@
-package com.platzi.pizza.infrastructure;
+package com.platzi.pizza.infrastructure.rest;
 
 import com.platzi.pizza.application.CustomerService;
 import com.platzi.pizza.persistence.entities.CustomerEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/api/customer")
 public class CustomerRestController {
     private final CustomerService customerService;
 

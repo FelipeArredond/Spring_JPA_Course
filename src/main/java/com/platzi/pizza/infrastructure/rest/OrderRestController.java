@@ -1,4 +1,4 @@
-package com.platzi.pizza.infrastructure;
+package com.platzi.pizza.infrastructure.rest;
 
 import com.platzi.pizza.application.OrderService;
 import com.platzi.pizza.persistence.entities.OrderEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/api/order")
 public class OrderRestController {
     private final OrderService orderService;
 
