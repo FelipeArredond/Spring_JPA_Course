@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pizza")
+@RequestMapping("/api/pizza")
 @Slf4j
 public class PizzaRestController {
     private final PizzaService pizzaService;
@@ -22,7 +22,7 @@ public class PizzaRestController {
         this.pizzaService = pizzaService;
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<Page<PizzaEntity>> getAll(@RequestParam(defaultValue = "0") int page,
                                                     @RequestParam(defaultValue = "8") int size){
         return new ResponseEntity<>(this.pizzaService.getAll(page, size), HttpStatus.OK);

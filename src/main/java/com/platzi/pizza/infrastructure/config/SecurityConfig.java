@@ -2,6 +2,7 @@ package com.platzi.pizza.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -11,14 +12,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
                 .csrf().disable()
-                .cors()                 //Cross Origin Enabled
-                .and()                  //Conector
-                .authorizeHttpRequests()//Autoriza las peticiones http
-                .anyRequest()           //Para cualquier peticion
-                //.permitAll();         //Permitir todas las peticiones
-                .authenticated()        // Todas las peticiones autenticadas
-                .and()                  // Conector
-                .httpBasic();           // Deben tener autenticacion http Basic
+                .cors().and()                   //Conector
+                .authorizeHttpRequests()        //Autoriza las peticiones http
+                .requestMatchers(HttpMethod.GET,"/api/**").permitAll()
+                .requestMatchers(HttpMethod.PUT).denyAll()
+                .anyRequest()                   //Para cualquier peticion
+                .authenticated().and()          // Conector
+                .httpBasic();                   // Deben tener autenticacion http Basic
         return http.build();
     }
 }
