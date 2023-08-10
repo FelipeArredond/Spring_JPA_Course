@@ -11,9 +11,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
                 .csrf().disable()
-                .authorizeHttpRequests() //Autoriza las peticiones http
-                .anyRequest()            //Para cualquier peticion
-                //.permitAll();          //Permitir todas las peticiones
+                .cors()                 //Cross Origin Enabled
+                .and()                  //Conector
+                .authorizeHttpRequests()//Autoriza las peticiones http
+                .anyRequest()           //Para cualquier peticion
+                //.permitAll();         //Permitir todas las peticiones
                 .authenticated()        // Todas las peticiones autenticadas
                 .and()                  // Conector
                 .httpBasic();           // Deben tener autenticacion http Basic
