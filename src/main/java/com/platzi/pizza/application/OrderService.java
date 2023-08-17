@@ -4,6 +4,7 @@ import com.platzi.pizza.persistence.entities.OrderEntity;
 import com.platzi.pizza.persistence.projection.OrderSummary;
 import com.platzi.pizza.persistence.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -44,6 +45,7 @@ public class OrderService {
         return this.orderRepository.findAllByMethodIn(Arrays.asList(DELIVERY, CARRYOUT));
     }
 
+    @Secured("ROLE_ADMIN")
     public List<OrderEntity> getCustomerOrders(String idCustomer){
         return this.orderRepository.findCustomerOrders(idCustomer);
     }
