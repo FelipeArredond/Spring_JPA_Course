@@ -41,4 +41,10 @@ public class OrderRestController {
     public ResponseEntity<List<OrderEntity>> getOutside(){
         return ResponseEntity.ok(this.orderService.getOutsideOrders());
     }
+
+    @GetMapping("/random")
+    public boolean random(){
+        return true;
+    }
+
 }

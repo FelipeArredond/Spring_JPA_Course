@@ -14,15 +14,16 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
                 .csrf().disable()
-                .cors().and()                   //Conector
-                .authorizeHttpRequests()        //Autoriza las peticiones http
+                .cors().and()
+                .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET,"/api/pizza/**").hasAnyRole("ADMIN", "CUSTOMER")
                 .requestMatchers(HttpMethod.POST,"/api/pizza/**").hasRole("ADMIN")
+                .requestMatchers("/api/order/random").hasAuthority("random_order")
                 .requestMatchers("/api/order/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT).hasRole("ADMIN")
-                .anyRequest()                   //Para cualquier peticion
-                .authenticated().and()          // Conector
-                .httpBasic();                   // Deben tener autenticacion http Basic
+                .anyRequest()
+                .authenticated().and()
+                .httpBasic();
         return http.build();
     }
 
